@@ -1,0 +1,26 @@
+using UnityEngine;
+
+public class LockChildTransform : MonoBehaviour
+{
+    public Transform childObject;
+
+    private Vector3 originalLocalPosition;
+    private Quaternion originalLocalRotation;
+    private Vector3 originalLocalScale;
+
+    void Start()
+    {
+        // Record the initial local values
+        originalLocalPosition = childObject.localPosition;
+        originalLocalRotation = childObject.localRotation;
+        originalLocalScale = childObject.localScale;
+    }
+
+    void LateUpdate()
+    {
+        // Lock the local transform to prevent changes
+        childObject.localPosition = originalLocalPosition;
+        childObject.localRotation = originalLocalRotation;
+        childObject.localScale = originalLocalScale;
+    }
+}
